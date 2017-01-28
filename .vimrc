@@ -106,8 +106,12 @@ autocmd BufWrite * :call DeleteTrailingWS()
 
 let g:ycm_key_list_select_completion = ['<Tab>']
 
+" Set different colorscheme for terminal
+colorscheme Tomorrow-Night
+
 if has("gui_macvim")
   set guifont=Consolas:h13
+
   " Press Ctrl-Tab to switch between open tabs (like browser tabs) to
   " the right side. Ctrl-Shift-Tab goes the other way.
   noremap <C-Tab> :tabnext<CR>
