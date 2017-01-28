@@ -134,3 +134,17 @@ endif
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|\.pyc$'
 let g:ycm_autoclose_preview_window_after_completion = 1
 
+" Latex specific settings
+func! CheckWrapping()
+  if &filetype == "plaintex"
+    set linebreak
+    set wrap
+  else
+    set nolinebreak
+    set nowrap
+  endif
+endfunc
+
+autocmd FileType * :call CheckWrapping()
+
+
