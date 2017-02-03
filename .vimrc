@@ -134,12 +134,14 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 
 " Latex specific settings
 func! CheckWrapping()
-  if &filetype == "plaintex"
+  if &filetype == "plaintex" || &filetype == "tex"
     set linebreak
     set wrap
+    set spelllang=en spell
   else
     set nolinebreak
     set nowrap
+    set nospell
   endif
 endfunc
 
