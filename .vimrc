@@ -7,16 +7,14 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin('~/.vim/vundle-plugins')
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'tpope/vim-fugitive'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-airline/vim-airline'
 Plugin 'tpope/vim-sleuth'
-Plugin 'rking/ag.vim'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-surround'
-Plugin 'vim-syntastic/syntastic'
+Plugin 'w0rp/ale'
 Plugin 'rust-lang/rust.vim'
 
 call vundle#end()
