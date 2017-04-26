@@ -25,8 +25,6 @@ set number
 set nowrap
 set backspace=2
 
-colorscheme smyck
-
 " Enable filetype plugins
 filetype plugin on
 filetype indent on
@@ -132,19 +130,23 @@ endif
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|\.pyc$'
 let g:ycm_autoclose_preview_window_after_completion = 1
 
+" Visual line movements. j and k respect wrapped lines.
+nnoremap j gj
+nnoremap k gk
+
+" Warn if file changed on disk
+:au FileChangedShell * echo "Warning: File changed on disk"
+
 " Latex specific settings
 func! CheckWrapping()
   if &filetype == "plaintex" || &filetype == "tex"
     set linebreak
     set wrap
-    set spelllang=en spell
   else
     set nolinebreak
     set nowrap
-    set nospell
   endif
 endfunc
 
 autocmd FileType * :call CheckWrapping()
-
 
