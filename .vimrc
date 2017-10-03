@@ -24,6 +24,9 @@ set number
 
 set nowrap
 set backspace=2
+set tabstop=2
+set expandtab
+set shiftwidth=2
 
 " Enable filetype plugins
 filetype plugin on
