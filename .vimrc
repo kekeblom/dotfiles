@@ -15,6 +15,8 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'w0rp/ale'
 Plugin 'rust-lang/rust.vim'
+Plugin 'godlygeek/csapprox'
+Plugin 'vim-scripts/AutoComplPop'
 
 call vundle#end()
 
@@ -105,7 +107,7 @@ autocmd BufWrite * :call DeleteTrailingWS()
 let g:ycm_key_list_select_completion = ['<Tab>']
 
 " Set different colorscheme for terminal
-colorscheme Tomorrow-Night
+colorscheme gruvbox
 
 if has("gui_macvim")
   set guifont=Consolas:h13
@@ -130,6 +132,7 @@ if has("gui_macvim")
 endif
 
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|\.pyc$'
+let g:ctrlp_working_path_mode = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
 
 " Visual line movements. j and k respect wrapped lines.
@@ -151,4 +154,6 @@ func! CheckWrapping()
 endfunc
 
 autocmd FileType * :call CheckWrapping()
+
+set clipboard=unnamed
 
