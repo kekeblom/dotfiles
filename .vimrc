@@ -16,7 +16,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'w0rp/ale'
 Plugin 'rust-lang/rust.vim'
 Plugin 'godlygeek/csapprox'
-Plugin 'vim-scripts/AutoComplPop'
+Plugin 'ervandew/supertab'
 
 call vundle#end()
 
@@ -108,6 +108,7 @@ let g:ycm_key_list_select_completion = ['<Tab>']
 
 " Set different colorscheme for terminal
 colorscheme gruvbox
+set background=dark
 
 if has("gui_macvim")
   set guifont=Consolas:h13
@@ -156,4 +157,8 @@ endfunc
 autocmd FileType * :call CheckWrapping()
 
 set clipboard=unnamed
+
+let g:python3_host_prog="/usr/local/anaconda3/envs/env/bin/python"
+let g:python_host_prog="/usr/local/anaconda3/envs/python2/bin/python"
+
 
