@@ -4,6 +4,7 @@ filetype off                  " required
 " Vundle config
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
+
 call vundle#begin('~/.vim/vundle-plugins')
 
 Plugin 'VundleVim/Vundle.vim'
@@ -11,14 +12,17 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'tpope/vim-sleuth'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-surround'
-Plugin 'w0rp/ale'
+" Plugin 'w0rp/ale'
 Plugin 'rust-lang/rust.vim'
 Plugin 'godlygeek/csapprox'
 Plugin 'ervandew/supertab'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 call vundle#end()
+
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|\.pyc$'
+let g:ctrlp_working_path_mode = 0
 
 " Line numbers
 set number
@@ -132,8 +136,6 @@ if has("gui_macvim")
   noremap <D-0> :tablast<CR>
 endif
 
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|\.pyc$'
-let g:ctrlp_working_path_mode = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
 
 " Visual line movements. j and k respect wrapped lines.
@@ -161,4 +163,13 @@ set clipboard=unnamed
 let g:python3_host_prog="/usr/local/anaconda3/envs/env/bin/python"
 let g:python_host_prog="/usr/local/anaconda3/envs/python2/bin/python"
 
+" add yaml stuffs
+au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
+map <Leader>p :call InsertDebugger()<CR>
+
+function! InsertDebugger()
+  let trace = expand("import ipdb; ipdb.set_trace()")
+  execute "normal o".trace
+endfunction
