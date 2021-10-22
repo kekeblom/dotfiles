@@ -1,0 +1,36 @@
+[user]
+	name = Kenneth Blomqvist
+	email = ken@strayrobots.io
+[pull]
+	default = current
+	ff = only
+[push]
+	default = current
+[alias]
+	co = checkout
+	fuckit = reset --hard
+	g = grep -i
+	gr = grep
+	st = status
+	lol = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+	br = branch
+	rull = pull --rebase
+	wwid = for-each-ref --count=10 --sort=-committerdate refs/heads/ --format='%(refname:short)'
+
+[merge]
+	tool = opendiff
+[difftool]
+	prompt = false
+[mergetool]
+	prompt = false
+
+[color]
+	ui = auto
+[core]
+	excludesfile = /Users/kennethblomqvist/.gitignore_global
+	editor = vim
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
