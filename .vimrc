@@ -11,13 +11,13 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'tpope/vim-sleuth'
 Plugin 'flazz/vim-colorschemes'
-Plugin 'terryma/vim-multiple-cursors'
+Plugin 'mg979/vim-visual-multi'
 Plugin 'tpope/vim-surround'
-" Plugin 'w0rp/ale'
-Plugin 'rust-lang/rust.vim'
 Plugin 'godlygeek/csapprox'
 Plugin 'ervandew/supertab'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'google/yapf'
+Plugin 'github/copilot.vim'
 
 call vundle#end()
 
@@ -26,7 +26,6 @@ let g:ctrlp_working_path_mode = 0
 
 " Line numbers
 set number
-
 set nowrap
 set backspace=2
 set tabstop=2
@@ -136,8 +135,6 @@ if has("gui_macvim")
   noremap <D-0> :tablast<CR>
 endif
 
-let g:ycm_autoclose_preview_window_after_completion = 1
-
 " Visual line movements. j and k respect wrapped lines.
 nnoremap j gj
 nnoremap k gk
@@ -147,7 +144,7 @@ nnoremap k gk
 
 " Latex specific settings
 func! CheckWrapping()
-  if &filetype == "plaintex" || &filetype == "tex"
+  if &filetype == "plaintex" || &filetype == "tex" || &filetype == "markdown"
     set linebreak
     set wrap
   else
@@ -173,3 +170,9 @@ function! InsertDebugger()
   let trace = expand("import ipdb; ipdb.set_trace()")
   execute "normal o".trace
 endfunction
+
+augroup vimrc
+  autocmd FileType python autocmd BufWritePre <buffer> call yapf#YAPF()
+augroup END
+
+let g:python3_host_prog="/usr/bin/python3"
